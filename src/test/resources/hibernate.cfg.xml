@@ -26,10 +26,10 @@
         <!-- 在启动时根据配置更新数据库 -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="com.ktb.model.User" />
-        <mapping class="com.ktb.model.Student" />
+       <!-- <mapping class="com.ktb.model.User" />
+        <mapping class="com.ktb.model.Student" />-->
         <mapping class="com.ktb.model.ClassRoom" />
-
+        <mapping class="com.ktb.model.Student" />
     </session-factory>
 
 </hibernate-configuration>
