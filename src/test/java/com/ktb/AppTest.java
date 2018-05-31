@@ -160,10 +160,12 @@ public class AppTest
         Metadata metadata = new MetadataSources(serviceRegistry)
                 .buildMetadata();
 
-   /*     new SchemaExport()
+        new SchemaExport()
                 .setOutputFile("db-schema.hibernate5.ddl")
-                .create(EnumSet.of(TargetType.SCRIPT), metadata);*/
+                .create(EnumSet.of(TargetType.SCRIPT), metadata);
 
         metadata.buildSessionFactory().close();
     }
+
+
 }
