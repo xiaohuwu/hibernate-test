@@ -3,7 +3,6 @@ package com.ktb;
 import static org.junit.Assert.assertTrue;
 
 import com.ktb.model.*;
-import com.sun.javafx.tk.Toolkit;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

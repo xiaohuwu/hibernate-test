@@ -17,7 +17,7 @@ public class Department {
 	private String departmentName;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	@JoinColumn(name="department_id")
+	@JoinColumn(name = "department_id")
 	private List<Employee> employees;
 
 	public Long getDepartmentId() {

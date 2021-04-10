@@ -40,7 +40,8 @@ public class Admin
     {
         this.name = name;
     }
-    @OneToMany( mappedBy="admin")   //　　OneToMany关联到了AdminRole这个类，由AdminRole这个类来维护多对一的关系，mappedBy="admin"
+
+    @OneToMany(mappedBy="admin")   //　　OneToMany关联到了AdminRole这个类，由AdminRole这个类来维护多对一的关系，mappedBy="admin"
     public Set<AdminRole> getArs()
     {
         return ars;

@@ -40,7 +40,7 @@ public class Role
     {
         this.name = name;
     }
-    @OneToMany(mappedBy="role")   //　OneToMany指定了由AdminRole这个类来维护多对一的关联关系，mappedBy="role"
+    @OneToMany(mappedBy="role")   //　OneToMany指定了由AdminRole这个类来维护多对一的关联关系，mappedBy="role" 标注在不保存关系的实体中
     public Set<AdminRole> getArs()
     {
         return ars;

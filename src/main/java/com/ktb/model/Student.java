@@ -6,13 +6,17 @@ import javax.persistence.*;
 @Table(name="student")
 public class Student
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int age;
-    private ClassRoom room;
 
     @ManyToOne  // ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)
-    @JoinColumn(name="room_id")    //JoinColumn 的name属性指定了外键的名称 rid　(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)
+//    @JoinColumn(name="room_id")    //JoinColumn 的name属性指定了外键的名称 rid　(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)
+    private ClassRoom room;
+
+
     public ClassRoom getRoom()
     {
         return room;
@@ -21,8 +25,7 @@ public class Student
     {
         this.room = room;
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public int getId()
     {
         return id;

@@ -6,12 +6,20 @@ import javax.persistence.*;
 @Table(name="t_admin_role")
 public class AdminRole
 {
-    private int id;
-    private String name;
-    private Admin admin;
-    private Role role;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name="admin_id")
+    private Admin admin;
+
+    @ManyToOne
+    @JoinColumn(name="role_id")
+    private Role role;
+
     public int getId()
     {
         return id;
@@ -28,8 +36,7 @@ public class AdminRole
     {
         this.name = name;
     }
-    @ManyToOne
-    @JoinColumn(name="admin_id")
+
     public Admin getAdmin()
     {
         return admin;
@@ -38,8 +45,7 @@ public class AdminRole
     {
         this.admin = admin;
     }
-    @ManyToOne
-    @JoinColumn(name="role_id")
+
     public Role getRole()
     {
         return role;

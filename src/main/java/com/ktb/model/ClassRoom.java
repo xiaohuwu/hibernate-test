@@ -12,8 +12,13 @@ import java.util.Set;
 @Table(name="class_room")
 public class ClassRoom
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String className;
+
+    @OneToMany //　OneToMany指定了一对多的关系，mappedBy="room"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)
+    @JoinColumn(name="room_id")
     private Set<Student> students;
 
     public ClassRoom()
@@ -26,8 +31,7 @@ public class ClassRoom
         students.add(student);
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public int getId()
     {
         return id;
@@ -48,7 +52,7 @@ public class ClassRoom
         this.className = className;
     }
 
-    @OneToMany(mappedBy="room") //　OneToMany指定了一对多的关系，mappedBy="room"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)
+
     public Set<Student> getStudents()
     {
         return students;
