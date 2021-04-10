@@ -1,6 +1,7 @@
 package com.ktb;
 
 
+import com.ktb.model.Person;
 import com.ktb.model.onetomany.A;
 import com.ktb.model.onetomany.B;
 import com.ktb.model.onetomany.Department;
@@ -38,6 +39,39 @@ public class OneToMany {
 
         session.save(department);
 
+        session.getTransaction().commit();
+        session.close();
+    }
+
+
+    @Test
+    public void Test1(){
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        //2. 根据服务注册类创建一个元数据资源集，同时构建元数据并生成应用一般唯一的的session工厂
+        SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
+        /****上面是配置准备，下面开始我们的数据库操作******/
+        Session session = sessionFactory.openSession();//从会话工厂获取一个session
+        session.getTransaction().begin();
+        Employee employee = session.get(Employee.class, 2L);
+        System.out.println("employee.getDepartment().toString()"+employee.getDepartment());
+        session.getTransaction().commit();
+        session.close();
+    }
+
+
+    @Test
+    public void Test2(){
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        //2. 根据服务注册类创建一个元数据资源集，同时构建元数据并生成应用一般唯一的的session工厂
+        SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
+        /****上面是配置准备，下面开始我们的数据库操作******/
+        Session session = sessionFactory.openSession();//从会话工厂获取一个session
+        session.getTransaction().begin();
+        Department department = session.get(Department.class, 1L);
+        System.out.println("==================>"+ department.getEmployees());
+        department.getEmployees().forEach(em -> System.out.println("==================>"+ em));
         session.getTransaction().commit();
         session.close();
     }

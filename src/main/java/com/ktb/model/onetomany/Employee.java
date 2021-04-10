@@ -26,11 +26,9 @@ public class Employee {
 	private String cellphone;
 
 	@ManyToOne
-//	@JoinColumn(name="department_id",
-//				insertable=false, updatable=false,
-//				nullable=false)
+	@JoinColumn(name = "department_id")
 	private Department department;
-	
+
 	public Employee() {
 		
 	}

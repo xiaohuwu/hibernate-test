@@ -15,9 +15,15 @@ public class Department {
 	
 	@Column(name="DEPT_NAME")
 	private String departmentName;
-	
+
+	/**
+	 * 方法1
+	 * @JoinColumn(name = "department_id")
+	 * 	 * 方法2
+	 * 	 设置mappingby 也可以让双方互相访问
+	 *
+	 */
 	@OneToMany(cascade={CascadeType.ALL})
-	@JoinColumn(name = "department_id")
 	private List<Employee> employees;
 
 	public Long getDepartmentId() {
