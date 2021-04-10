@@ -1,6 +1,8 @@
 package com.ktb;
 
 
+import com.ktb.model.onetomany.A;
+import com.ktb.model.onetomany.B;
 import com.ktb.model.onetomany.Department;
 import com.ktb.model.onetomany.Employee;
 import org.hibernate.Session;
@@ -35,6 +37,25 @@ public class OneToMany {
         department.getEmployees().add(emp2);
 
         session.save(department);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Test
+    public void TestA(){
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        //2. 根据服务注册类创建一个元数据资源集，同时构建元数据并生成应用一般唯一的的session工厂
+        SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
+        Session session = sessionFactory.openSession();//从会话工厂获取一个session
+        session.getTransaction().begin();
+
+        B b= new B();
+        A a = new A();
+        a.bs.add(b);
+        session.save(a);
+
 
         session.getTransaction().commit();
         session.close();

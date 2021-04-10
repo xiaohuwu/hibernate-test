@@ -30,9 +30,12 @@
         <mapping class="com.ktb.model.Student" />-->
         <mapping class="com.ktb.model.onetomany.Department" />
         <mapping class="com.ktb.model.onetomany.Employee" />
+        <mapping class="com.ktb.model.onetomany.A" />
+        <mapping class="com.ktb.model.onetomany.B" />
 
         <mapping class="com.ktb.model.Student" />
         <mapping class="com.ktb.model.ClassRoom" />
+
     </session-factory>
 
 </hibernate-configuration>
